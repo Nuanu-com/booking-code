@@ -5,7 +5,7 @@ go get github.com/Nuanu-com/booking-code@v0.1.0
 
 ```go
 import (
-  "github.com/Nuanu-com/booking-code"
+  booking_code "github.com/Nuanu-com/booking-code"
   "time"
 )
 
