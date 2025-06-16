@@ -66,6 +66,6 @@ var _ = Describe("BookingCode", func() {
 		Expect(result).To(Equal("110-BBGAZEMS"))
 
 		result = booking_code.BookingCode("110", time.Date(2025, 06, 27, 0, 0, 0, 0, time.Local), 4)
-		Expect(result).To(Equal("110-BBGAZXXE"))
+		Expect(result).To(Equal("110-BBGAZAAE"))
 	})
 })
