@@ -1,6 +1,6 @@
 # How to use
 ```sh
-go get github.com/Nuanu-com/booking-code@v0.1.2
+go get github.com/Nuanu-com/booking-code@v0.1.3
 ```
 
 ```go
