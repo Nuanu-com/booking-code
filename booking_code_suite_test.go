@@ -63,9 +63,13 @@ var _ = Describe("BookingCode", func() {
 	It("returns hashed result", func() {
 		result := booking_code.BookingCode("110", time.Date(2025, 06, 27, 0, 0, 0, 0, time.Local), 3034)
 
-		Expect(result).To(Equal("110-NNZAQCFI"))
+		Expect(result).To(Equal("110-NNZMQCFI"))
 
 		result = booking_code.BookingCode("110", time.Date(2025, 06, 27, 0, 0, 0, 0, time.Local), 4)
-		Expect(result).To(Equal("110-NNZAQAAC"))
+		Expect(result).To(Equal("110-NNZMQMMC"))
+
+		result = booking_code.BookingCode("672", time.Date(2025, 06, 18, 0, 0, 0, 0, time.Local), 11)
+
+		Expect(result).To(Equal("672-MIZMQMMG"))
 	})
 })

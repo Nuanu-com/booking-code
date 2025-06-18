@@ -69,10 +69,10 @@ func BookingCode(funnelCode string, orderDate time.Time, orderSequence int) stri
 
 	yearDigit := year % 1000 // To get the last 2 digit
 
-	dayF := LeftPad("A", 2, Hash(day))
+	dayF := LeftPad("M", 2, Hash(day))
 	monthF := Hash(int(month))
-	yearF := LeftPad("A", 2, Hash(yearDigit))
-	sequenceF := LeftPad("A", 3, Hash(orderSequence))
+	yearF := LeftPad("M", 2, Hash(yearDigit))
+	sequenceF := LeftPad("M", 3, Hash(orderSequence))
 
 	return fmt.Sprintf("%s-%s%s%s%s", funnelCode, dayF, monthF, yearF, sequenceF)
 }
