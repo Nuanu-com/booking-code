@@ -38,7 +38,7 @@ var _ = Describe("Hash", func() {
 	It("Hash the number", func() {
 		Expect(booking_code.Hash(0)).To(Equal("M"))
 		Expect(booking_code.Hash(1)).To(Equal("N"))
-		Expect(booking_code.Hash(25)).To(Equal("Z"))
+		Expect(booking_code.Hash(25)).To(Equal("Q"))
 		Expect(booking_code.Hash(26)).To(Equal("NM"))
 		Expect(booking_code.Hash(27)).To(Equal("NN"))
 		Expect(booking_code.Hash(28)).To(Equal("NB"))
@@ -46,8 +46,8 @@ var _ = Describe("Hash", func() {
 		Expect(booking_code.Hash(30)).To(Equal("NC"))
 		Expect(booking_code.Hash(31)).To(Equal("NX"))
 
-		Expect(booking_code.Hash(2025)).To(Equal("BZX"))
-		Expect(booking_code.Hash(9999)).To(Equal("OUP"))
+		Expect(booking_code.Hash(2025)).To(Equal("BQE"))
+		Expect(booking_code.Hash(9999)).To(Equal("SYA"))
 	})
 })
 
@@ -63,9 +63,9 @@ var _ = Describe("BookingCode", func() {
 	It("returns hashed result", func() {
 		result := booking_code.BookingCode("110", time.Date(2025, 06, 27, 0, 0, 0, 0, time.Local), 3034)
 
-		Expect(result).To(Equal("110-NNZAZCMS"))
+		Expect(result).To(Equal("110-NNZAQCFI"))
 
 		result = booking_code.BookingCode("110", time.Date(2025, 06, 27, 0, 0, 0, 0, time.Local), 4)
-		Expect(result).To(Equal("110-NNZAZAAC"))
+		Expect(result).To(Equal("110-NNZAQAAC"))
 	})
 })

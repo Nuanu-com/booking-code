@@ -16,7 +16,7 @@ func main() {
 
   result := booking_code.BookingCode(funnelID, orderDate, orderSequence)
 
-  fmt.Printf("%s", result) // => 010-BBGAZEMS
+  fmt.Printf("%s", result) // => 110-NNZAQCFI
 }
 ```
 
