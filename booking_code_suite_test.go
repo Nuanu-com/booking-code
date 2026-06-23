@@ -59,6 +59,45 @@ var _ = Describe("LeftPad", func() {
 	})
 })
 
+var _ = Describe("Unhash", func() {
+	It("reverses Hash", func() {
+		Expect(booking_code.Unhash("M")).To(Equal(0))
+		Expect(booking_code.Unhash("N")).To(Equal(1))
+		Expect(booking_code.Unhash("Q")).To(Equal(25))
+		Expect(booking_code.Unhash("NM")).To(Equal(26))
+		Expect(booking_code.Unhash("NN")).To(Equal(27))
+		Expect(booking_code.Unhash("BQE")).To(Equal(2025))
+		Expect(booking_code.Unhash("SYA")).To(Equal(9999))
+	})
+})
+
+var _ = Describe("ParseBookingCode", func() {
+	It("reverses BookingCode", func() {
+		funnelCode, date, seq, err := booking_code.ParseBookingCode("110-NNZMQCFI")
+		Expect(err).To(BeNil())
+		Expect(funnelCode).To(Equal("110"))
+		Expect(date).To(Equal(time.Date(2025, 06, 27, 0, 0, 0, 0, time.UTC)))
+		Expect(seq).To(Equal(3034))
+
+		funnelCode, date, seq, err = booking_code.ParseBookingCode("110-NNZMQMMC")
+		Expect(err).To(BeNil())
+		Expect(funnelCode).To(Equal("110"))
+		Expect(date).To(Equal(time.Date(2025, 06, 27, 0, 0, 0, 0, time.UTC)))
+		Expect(seq).To(Equal(4))
+
+		funnelCode, date, seq, err = booking_code.ParseBookingCode("672-MIZMQMMG")
+		Expect(err).To(BeNil())
+		Expect(funnelCode).To(Equal("672"))
+		Expect(date).To(Equal(time.Date(2025, 06, 18, 0, 0, 0, 0, time.UTC)))
+		Expect(seq).To(Equal(11))
+	})
+
+	It("returns an error for invalid codes", func() {
+		_, _, _, err := booking_code.ParseBookingCode("INVALID")
+		Expect(err).NotTo(BeNil())
+	})
+})
+
 var _ = Describe("BookingCode", func() {
 	It("returns hashed result", func() {
 		result := booking_code.BookingCode("110", time.Date(2025, 06, 27, 0, 0, 0, 0, time.Local), 3034)
